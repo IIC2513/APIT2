@@ -8,7 +8,11 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
-
+const swaggerUi = require('swagger-ui-express');
+const YAML = require('yamljs');
+const swaggerDocument = YAML.load('./swagger.yaml'); 
+// Set up Swagger UI middleware
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 // Databases conection
 const db = require('./models');
 
