@@ -67,31 +67,42 @@ router.get('/:category/:id', async (req, res) => {
   }
 });
 
-router.post('/', authenticateToken, async (req, res) => {
-  try {
-    const product = await Product.create(req.body);
-    res.json(product);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Error al crear el producto' });
-  }
-});
+// router.post('/', authenticateToken, async (req, res) => {
+//   try {
+//     console.log('Ruta de productos cargada');
+//     console.log(req.params);
+//     // const { name, description, stock, price, category } = req.body;
+//     // const product = await Product.create({
+//     //   name,
+//     //   description,
+//     //   stock,
+//     //   price,
+//     //   category,
+//     // });
 
-router.put('/:id', authenticateToken, async (req, res) => {
-  try {
-    const productId = req.params.id;
-    const product = await Product.findByPk(productId);
-    if (product) {
-      const updatedProduct = await product.update(req.body);
-      res.json(updatedProduct);
-    } else {
-      res.status(404).json({ error: 'Producto no encontrado' });
-    }
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Error al actualizar el producto' });
-  }
-});
+//     // res.json(product);
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ error: 'Error al crear el producto' });
+//   }
+// });
+
+// router.put('/:id', authenticateToken, async (req, res) => {
+//   try {
+//     console.log("August")
+//     const productId = req.params.id;
+//     const product = await Product.findByPk(productId);
+//     if (product) {
+//       const updatedProduct = await product.update(req.body);
+//       res.json(updatedProduct);
+//     } else {
+//       res.status(404).json({ error: 'Producto no encontrado' });
+//     }
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ error: 'Error al actualizar el producto' });
+//   }
+// });
 
 router.delete('/:id', authenticateToken, async (req, res) => {
   try {
