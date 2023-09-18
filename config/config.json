@@ -1,7 +1,7 @@
 {
   "development": {
-    "username": "apit2",
-    "password": "apit2",
+    "username": "postgres",
+    "password": "charquican",
     "database": "apit2",
     "host": "localhost",
     "dialect": "postgres"

@@ -15,7 +15,7 @@ const db = require('./models');
 // Cors
 const cors = require('cors');
 app.use(cors());
-
+app.use(express.json());
 // Routes products
 const productRoutes = require('./routes/product');
 app.use('/products', productRoutes); // Monta las rutas de productos en /products
