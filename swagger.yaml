@@ -1,0 +1,109 @@
+openapi: 3.0.0
+info:
+  title: API T2
+  description: API hecha para la Tarea 2 del curso Tecnología y Aplicaciones Web (IIC2513-1) 
+  version: 1.0.0
+paths:
+  /products:
+    get:
+      summary: Obtener todos los productos
+      description: Obtiene una lista de todos los productos disponibles.
+      responses:
+        '200':
+          description: Respuesta exitosa
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              example:
+                error: Error al obtener los productos
+  /products/{id}:
+      get:
+        summary: Obtener un producto por su ID
+        description: Obtiene un producto por su ID.
+        parameters:
+          - in: path
+            name: id
+            required: true
+            description: ID del producto a buscar
+            schema:
+              type: integer
+        responses:
+          '200':
+            description: Respuesta exitosa
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Product'
+          '404':
+            description: Producto no encontrado
+            content:
+              application/json:
+                example:
+                  error: Producto no encontrado
+          '500':
+            description: Error interno del servidor
+            content:
+              application/json:
+                example:
+                  error: Error al obtener el producto
+  /products/{category}/{id}:
+      get:
+        summary: Obtener un producto por categoría e ID
+        description: Obtiene un producto por su categoría y su ID.
+        parameters:
+          - in: path
+            name: category
+            required: true
+            description: Categoría del producto a buscar
+            schema:
+              type: string
+          - in: path
+            name: id
+            required: true
+            description: ID del producto a buscar
+            schema:
+              type: integer
+        responses:
+          '200':
+            description: Respuesta exitosa
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Product'
+          '404':
+            description: Producto no encontrado
+            content:
+              application/json:
+                example:
+                  error: Producto no encontrado
+          '500':
+            description: Error interno del servidor
+            content:
+              application/json:
+                example:
+                  error: Error al obtener el producto
+
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        price:
+          type: number
+        category:
+          type: string
+        stock:
+          type: integer
+        description:
+          type: string
