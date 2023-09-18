@@ -1,0 +1,29 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: mydb
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+    ports:
+      - "5432:5432"
+    networks:
+      - my-network
+
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+    environment:
+      PGHOST: postgres
+      PGUSER: myuser
+      PGPASSWORD: mypassword
+      PGDATABASE: mydb
+    networks:
+      - my-network
+
+networks:
+  my-network:
