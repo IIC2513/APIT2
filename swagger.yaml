@@ -81,6 +81,8 @@ paths:
       put:
         summary: Actualizar un producto por su ID
         description: Actualiza un producto por su ID.
+        security:
+          - bearerAuth: []
         parameters:
           - in: path
             name: id
@@ -116,6 +118,8 @@ paths:
       delete:
         summary: Eliminar un producto por su ID
         description: Elimina un producto por su ID.
+        security:
+          - bearerAuth: []
         parameters:
           - in: path
             name: id
