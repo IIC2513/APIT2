@@ -23,6 +23,31 @@ paths:
             application/json:
               example:
                 error: Error al obtener los productos
+    post:
+      summary: Crear un nuevo producto
+      description: Crea un nuevo producto.
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+      responses:
+        '200':
+          description: Producto creado exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              example:
+                error: Error al crear el producto
+
   /products/{id}:
       get:
         summary: Obtener un producto por su ID
@@ -53,26 +78,25 @@ paths:
               application/json:
                 example:
                   error: Error al obtener el producto
-  /products/{category}/{id}:
-      get:
-        summary: Obtener un producto por categoría e ID
-        description: Obtiene un producto por su categoría y su ID.
+      put:
+        summary: Actualizar un producto por su ID
+        description: Actualiza un producto por su ID.
         parameters:
-          - in: path
-            name: category
-            required: true
-            description: Categoría del producto a buscar
-            schema:
-              type: string
           - in: path
             name: id
             required: true
-            description: ID del producto a buscar
+            description: ID del producto a actualizar
             schema:
               type: integer
+        requestBody:
+          required: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
         responses:
           '200':
-            description: Respuesta exitosa
+            description: Producto actualizado exitosamente
             content:
               application/json:
                 schema:
@@ -88,7 +112,73 @@ paths:
             content:
               application/json:
                 example:
-                  error: Error al obtener el producto
+                  error: Error al actualizar el producto
+      delete:
+        summary: Eliminar un producto por su ID
+        description: Elimina un producto por su ID.
+        parameters:
+          - in: path
+            name: id
+            required: true
+            description: ID del producto a eliminar
+            schema:
+              type: integer
+        responses:
+          '200':
+            description: Producto eliminado exitosamente
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Product'
+          '404':
+            description: Producto no encontrado
+            content:
+              application/json:
+                example:
+                  error: Producto no encontrado
+          '500':
+            description: Error interno del servidor
+            content:
+              application/json:
+                example:
+                  error: Error al eliminar el producto
+
+  /products/{category}/{id}:
+    get:
+      summary: Obtener un producto por categoría e ID
+      description: Obtiene un producto por su categoría y su ID.
+      parameters:
+        - in: path
+          name: category
+          required: true
+          description: Categoría del producto a buscar
+          schema:
+            type: string
+        - in: path
+          name: id
+          required: true
+          description: ID del producto a buscar
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Respuesta exitosa
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        '404':
+          description: Producto no encontrado
+          content:
+            application/json:
+              example:
+                error: Producto no encontrado
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              example:
+                error: Error al obtener el producto
 
 components:
   schemas:
@@ -107,3 +197,8 @@ components:
           type: integer
         description:
           type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
