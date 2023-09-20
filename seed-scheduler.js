@@ -2,7 +2,7 @@ const cron = require('node-cron');
 const { exec } = require('child_process');
 
 // Programa la tarea para ejecutarse todos los días a las 23:30
-cron.schedule('55 23 * * *', () => {
+cron.schedule('30 23 * * *', () => {
    console.log('Iniciando tarea programada...');
    
    // Ejecuta los comandos

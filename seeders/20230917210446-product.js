@@ -8,7 +8,7 @@ module.exports = {
     const products = [];
     
     // Genera 60 productos aleatorios
-    for (let i = 0; i < 60; i++) {
+    for (let i = 0; i < 300; i++) {
       const productName = chance.word();
       const productDescription = chance.sentence();
       const productStock = chance.integer({ min: 1, max: 50 });
