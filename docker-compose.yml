@@ -8,6 +8,7 @@ services:
       - "3000:3000"  # Mapea el puerto de tu aplicación
     depends_on:
       - db
+    command: ["./init-db.sh"]
   db:
     image: postgres:latest
     environment:

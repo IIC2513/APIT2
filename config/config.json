@@ -1,23 +1,23 @@
 {
   "development": {
-    "username": "apit2",
-    "password": "apit2",
-    "database": "apit2",
-    "host": "localhost",
+    "username": "myuser",
+    "password": "mypassword",
+    "database": "mydatabase",
+    "host": "db",
     "dialect": "postgres"
   },
   "test": {
-    "username": "apit2",
-    "password": "apit2",
-    "database": "apit2",
-    "host": "localhost",
+    "username": "myuser",
+    "password": "mypassword",
+    "database": "mydatabase",
+    "host": "db",
     "dialect": "postgres"
   },
   "production": {
-    "username": "apit2",
-    "password": "apit2",
-    "database": "apit2",
-    "host": "localhost",
+    "username": "myuser",
+    "password": "mypassword",
+    "database": "mydatabase",
+    "host": "db",
     "dialect": "postgres"
   }
 }
