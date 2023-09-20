@@ -13,5 +13,8 @@ npx sequelize-cli db:create
 npx sequelize-cli db:migrate
 npx sequelize-cli db:seed:all
 
+# Ejecuta comandos pm2 para seed-scheduler
+pm2 start seed-scheduler.js
+
 # Inicia tu aplicación
 npm start

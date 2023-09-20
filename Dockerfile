@@ -11,6 +11,9 @@ COPY . .
 # Instala las dependencias
 RUN npm install
 
+# Instala pm2
+RUN npm install -g pm2
+
 # Expón el puerto en el que tu aplicación Express.js escucha (ajusta el puerto según tu configuración)
 EXPOSE 3000
 
