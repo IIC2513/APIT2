@@ -9,7 +9,7 @@ En caso de que haya problemas con el link anterior, ustedes pueden correr la API
 1. Clonar este repositorio APIT2 en su computador.
 2. Correr el comando `npm install`: para instalar todas las dependencias mínimas necesarias para correr el programa.
 3. Cambiar en el archivo `config/config.json` de la línea 1 a la 8, tal que los parámetros utilizados en development correspondan a los existentes en su computador. Específicamente, deberán cambiar el username, password y database name de la configuración tal que calce con sus datos personales.
-4. Crear una base de datos en postgres con el nombre establecido en su archivo `config/config.json`. Para ello, deben utilizar el comando `createdb {databasename}`.
+4. Crear una base de datos en postgres con el nombre establecido en su archivo `config/config.json`. Para ello, deben utilizar el comando `createdb {databasename}`. Para esto, recuerden tener instalado Postgres.
 5. Correr los comandos de Sequelize necesarios para la creación y migración de la base de datos con sus respectivas seeds. Para ello, deben correr `npx sequelize-cli db:create`, luego `npx sequelize-cli db:migrate` y, por último `npx sequelize-cli db:seed:all`.
 6. Correr la aplicación en el puerto 3000 con el comando `npm start`.
 
